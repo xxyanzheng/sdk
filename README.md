@@ -12,12 +12,12 @@
 ### sdk通用函数包括
 
 iOS
-* (NSString*) concatString:(NSString*) dest src:(NSString*) src; // 字符串拼接
-* (NSString*) replaceString:(NSString*) originalContent oldText:(NSString*) oldText newText:(NSString*) newText; //字符串替换
+* `(NSString*) concatString:(NSString*) dest src:(NSString*) src; // 字符串拼接`
+* `(NSString*) replaceString:(NSString*) originalContent oldText:(NSString*) oldText newText:(NSString*) newText; //字符串替换`
 
 Android
-* String concatString(String dest, String src);
-* String replaceString(String originalContent, String oldText, String newText);
+* `String concatString(String dest, String src); // 字符串拼接`
+* `String replaceString(String originalContent, String oldText, String newText); //字符串替换`
 
 
 

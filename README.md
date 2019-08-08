@@ -1,7 +1,6 @@
 # 叉叉验证sdk文档 - 极简文档
 
-## [高级功能请跳转](https://github.com/xxyanzheng/sdk/blob/master/andvance.md)
-
+## [高级功能请跳转](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
 
 ## sdk介绍
 初次使用会弹框要求出入卡密,成功后弹框消失,下次启动会在后台自动验证, 通过后不会再弹框,免得影响用户体验. 如果之前验证通过,且当前网络不好,在一定时间内不会弹框,直到超过一定时间才会弹框要求输入卡密,以保证用户体验
@@ -44,7 +43,7 @@ sdk内置有个崩溃代码,来保证sdk被正确的调用,请逐次核对一下
 * 联系我们进行免费技术支持
 
 
-## [高级功能请跳转](https://github.com/xxyanzheng/sdk/blob/master/andvance.md)
+## [高级功能请跳转](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
 
 ## SDK下载
 * [iOS SDK](#)

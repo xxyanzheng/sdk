@@ -1,6 +1,8 @@
 # 叉叉验证sdk文档 - 高级功能
 
 ## [极简文档请跳转](https://github.com/xxyanzheng/sdk)
+## [高级功能请跳转](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
+## [平台使用说明](https://github.com/xxyanzheng/sdk/blob/master/platform.md)
 
 ## sdk通用函数
 叉叉验证sdk有个不常用的概念`sdk通用函数`, sdk内置有一些常用的函数,如`字符串拼接`, `字符串替换`来代替objc或者java原生函数,这些函数就是叉叉验证sdk中特有也是非常重要的`sdk通用函数`. 它们调用了iOS和Android的内核信息,检测了运行环境是否安全,sdk是否被改动,加密信息是否被破解,网络是否被劫持等情况,让破解者无从下手,极大地保证了您软件的安全性, 保证了您的正常收益不受侵犯. 
@@ -42,7 +44,7 @@ VerifyCoreDelegate* delegate = [[VerifyCoreDelegate alloc] initWithFailHandler:^
     NSLog(@"卡密错误，直接弹框重新输入卡密: %@", error);
 } successHandler:^(NSDate * _Nonnull startDate, NSDate * _Nonnull endDate, NSString * _Nonnull macAddr) {
     NSLog(@"登录成功，\n激活日期: %@ \n有效期至: %@ \n现在时间: %@\n硬件Id: %@", startDate, endDate, [NSDate new], macAddr);
-    [self notFreeFeature]; //调用收费功能,跳转界面等
+    [self notFreeFeature]; //调用收费功能,跳转界面等, 也可以啥都不做
 }];
 [VerifyCore.share login: delegate];
 ```
@@ -51,8 +53,38 @@ VerifyCoreDelegate* delegate = [[VerifyCoreDelegate alloc] initWithFailHandler:^
 
 
 ## Android
+* 解压sdk文件到工程文件目录`app/libs`, 最终的目录结构为`app/libs/XxyanzhengSDK.aar`
+```
+-app
+----libs
+-------- XxyanzhengSDK.aar
+-------- x86
+-------- x86_64
+-------- arm64-v8a
+-------- armeabi-v7a
+```
+* 在 `app/build.gradle` 添加配置
+```
+android {
+    ...
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    sourceSets{
+        main{
+            jniLibs.srcDirs=['libs']
+        }
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation (name:'XxyanzhengSDK', ext:'aar')
+    ...
+}
+```
 
-1. TODO
 
 
 ## FAQ

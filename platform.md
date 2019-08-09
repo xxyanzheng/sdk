@@ -1,8 +1,8 @@
 # 叉叉验证sdk文档 - 平台使用说明
 
-## [极简文档请跳转](https://github.com/xxyanzheng/sdk)
-## [高级功能请跳转](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
-## [平台使用说明](https://github.com/xxyanzheng/sdk/blob/master/platform.md)
+#### [极简功能](https://github.com/xxyanzheng/sdk)
+#### [高级功能](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
+#### [平台说明](https://github.com/xxyanzheng/sdk/blob/master/platform.md)
 
 
 ## 收费规则

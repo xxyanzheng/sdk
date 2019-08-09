@@ -1,8 +1,8 @@
 # 叉叉验证sdk文档 - 高级功能
 
-## [极简文档请跳转](https://github.com/xxyanzheng/sdk)
-## [高级功能请跳转](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
-## [平台使用说明](https://github.com/xxyanzheng/sdk/blob/master/platform.md)
+#### [极简功能](https://github.com/xxyanzheng/sdk)
+#### [高级功能](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
+#### [平台说明](https://github.com/xxyanzheng/sdk/blob/master/platform.md)
 
 ## sdk通用函数
 叉叉验证sdk有个不常用的概念`sdk通用函数`, sdk内置有一些常用的函数,如`字符串拼接`, `字符串替换`来代替objc或者java原生函数,这些函数就是叉叉验证sdk中特有也是非常重要的`sdk通用函数`. 它们调用了iOS和Android的内核信息,检测了运行环境是否安全,sdk是否被改动,加密信息是否被破解,网络是否被劫持等情况,让破解者无从下手,极大地保证了您软件的安全性, 保证了您的正常收益不受侵犯. 

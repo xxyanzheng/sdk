@@ -1,7 +1,7 @@
 # 叉叉验证sdk文档 - 高级功能
 
 #### [极简功能](https://github.com/xxyanzheng/sdk)
-#### [高级功能](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
+#### [高级功能](#)
 #### [平台说明](https://github.com/xxyanzheng/sdk/blob/master/platform.md)
 
 ## sdk通用函数

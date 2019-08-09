@@ -2,7 +2,7 @@
 
 #### [极简功能](https://github.com/xxyanzheng/sdk)
 #### [高级功能](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
-#### [平台说明](https://github.com/xxyanzheng/sdk/blob/master/platform.md)
+#### [平台说明](#)
 
 
 ## 收费规则

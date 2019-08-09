@@ -11,31 +11,32 @@
 
 ## iOS
 
-1. 将`VerifySDK.framework`拖入工程
-2. 设置`TARGETS`->`General`->`Embedded Binaries`->`+` 添加 `VerifySDK.framework`
-3. App启动时候调用`[VerifyCore.share init:@"111111"];`, 传入软件Id进行初始化
-4. 使用收费功能之前进行卡密验证
+1. 将`YanzhengSDK.framework`拖入工程
+2. 设置`TARGETS`->`General`->`Embedded Binaries`->`+` 添加 `YanzhengSDK.framework`
+3. 引用 `#import <YanzhengSDK/YanzhengSDK.h>`
+4. App启动时候调用`[YanzhengCore.share init:@"111111"];`, 传入软件Id进行初始化
+5. 使用收费功能之前进行卡密验证
 ```
-VerifyCoreDelegate* delegate = [[VerifyCoreDelegate alloc] initWithFailHandler:^(NSError * _Nonnull error) {
+YanzhengCoreDelegate* delegate = [[YanzhengCoreDelegate alloc] initWithFailHandler:^(NSError * _Nonnull error) {
     NSLog(@"网络等其他位置错误，需要自己处理: %@", error);
 } errorHandler:^(NSString * _Nullable error) {
     NSLog(@"卡密错误，直接弹框重新输入卡密: %@", error);
 } successHandler:^(NSDate * _Nonnull startDate, NSDate * _Nonnull endDate, NSString * _Nonnull macAddr) {
     NSLog(@"登录成功，\n激活日期: %@ \n有效期至: %@ \n现在时间: %@\n硬件Id: %@", startDate, endDate, [NSDate new], macAddr);
-    [self notFreeFeature]; //调用收费功能,跳转界面等, 也可以啥都不做
+    [self notFreeFeature];//调用收费功能,跳转界面等, 也可以啥都不做
 }];
-[VerifyCore.share login: delegate];
+[YanzhengCore.share login: delegate];
 ```
 
 
 
 ## Android
 
-1. 解压sdk文件到工程文件目录`app/libs`, 最终的目录结构为`app/libs/XxyanzhengSDK.aar`
+1. 解压sdk文件到工程文件目录`app/libs`, 最终的目录结构为`app/libs/yanzhengSDK.aar`
 ```
 -app
 ----libs
--------- XxyanzhengSDK.aar
+-------- yanzhengSDK.aar
 -------- x86
 -------- x86_64
 -------- arm64-v8a
@@ -47,9 +48,14 @@ android {
     repositories { flatDir { dirs 'libs' } }
     sourceSets { main { jniLibs.srcDirs=['libs'] }}
 }
+compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation (name:'XxyanzhengSDK-debug', ext:'aar')
+    implementation (name:'yanzhengSDK', ext:'aar')
+    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
 }
 ```
 3. 在`AndoridManifest.xml`中申请权限
@@ -67,18 +73,15 @@ VerifyCore.VerifyCoreCallback callback = new VerifyCore.VerifyCoreCallback() {
         Log.d(TAG, "登录成功，\n激活日期: " + startDate + "\n有效期至: " + endDate + "\n现在时间: " + new Date() + "\n硬件Id: " + madAddr);
         notFreeFeature(); //调用收费功能,跳转界面等, 也可以啥都不做
     }
-
     @Override
     public void failHandler(Exception exception) {
         Log.e(TAG, "网络等其他位置错误，需要自己处理: " + exception);
     }
-
     @Override
     public void errorHandler(String message) {
         Log.e(TAG, "卡密错误，直接弹框重新输入卡密: " + message);
     }
 };
-
 VerifyCore.share().login(callback);
 ```
 

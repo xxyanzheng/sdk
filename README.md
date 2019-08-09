@@ -1,7 +1,5 @@
 # 叉叉验证sdk文档 - 极简文档
 
-![logo](https://github.com/xxyanzheng/sdk/blob/master/logo.png)
-
 ## [高级功能请跳转](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
 
 ## sdk介绍

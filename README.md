@@ -51,16 +51,7 @@ let delegate = YanzhengCoreDelegate.init(failHandler: { (error) in
 
 ## Android
 
-1. 解压sdk文件到工程文件目录`app/libs`, 最终的目录结构为`app/libs/yanzhengSDK.aar`
-```
--app
-----libs
--------- yanzhengSDK.aar
--------- x86
--------- x86_64
--------- arm64-v8a
--------- armeabi-v7a
-```
+1. 解压sdk文件到工程文件目录`app/libs`, 最终的目录结构为`app/libs/YanzhengSDK-release.aar`
 2. 在 `app/build.gradle` 添加配置
 ```
 android { 
@@ -73,7 +64,7 @@ compileOptions {
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation (name:'yanzhengSDK', ext:'aar')
+    implementation (name:'YanzhengSDK-release', ext:'aar')
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
 }
 ```

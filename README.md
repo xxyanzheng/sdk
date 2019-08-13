@@ -1,6 +1,6 @@
 # 叉叉验证sdk文档 - 极简文档
 
-#### [极简功能](#)
+#### [极简用法](#)
 #### [高级功能](https://github.com/xxyanzheng/sdk/blob/master/advance.md)
 #### [平台说明](https://github.com/xxyanzheng/sdk/blob/master/platform.md)
 
@@ -14,8 +14,14 @@
 1. 将`YanzhengSDK.framework`拖入工程
 2. 设置`TARGETS`->`General`->`Embedded Binaries`->`+` 添加 `YanzhengSDK.framework`
 3. 引用 `#import <YanzhengSDK/YanzhengSDK.h>`
-4. App启动时候调用`[YanzhengCore.share init:@"111111"];`, 传入软件Id进行初始化
+4. App启动时候调用`setup`, 传入软件Id进行初始化
+```
+[YanzhengCore.share setup:@"111111"]; // objc
+(YanzhengCore.share() as! YanzhengCore).setup("1111111") // swift
+```
 5. 使用收费功能之前进行卡密验证
+
+objc
 ```
 YanzhengCoreDelegate* delegate = [[YanzhengCoreDelegate alloc] initWithFailHandler:^(NSError * _Nonnull error) {
     NSLog(@"网络等其他位置错误，需要自己处理: %@", error);
@@ -26,6 +32,19 @@ YanzhengCoreDelegate* delegate = [[YanzhengCoreDelegate alloc] initWithFailHandl
     [self notFreeFeature];//调用收费功能,跳转界面等, 也可以啥都不做
 }];
 [YanzhengCore.share login: delegate];
+```
+
+swift
+``` 
+let delegate = YanzhengCoreDelegate.init(failHandler: { (error) in
+    print("网络等其他位置错误，需要自己处理: \(error)")
+}, errorHandler: { (error) in
+    print("卡密错误，直接弹框重新输入卡密: \(error!)")
+}) { (startDate, endDate, macAddr) in
+    print("登录成功，\n激活日期: \(startDate) \n有效期至: \(endDate) \n现在时间: \(Date())\n硬件Id: \(macAddr)")
+    self.notFreeFeature()
+}
+(YanzhengCore.share() as! YanzhengCore).login(delegate)
 ```
 
 
@@ -64,7 +83,7 @@ dependencies {
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <application android:usesCleartextTraffic="true">
 ```
-4. App启动时候调用`VerifyCore.share().init(activity, "1111111");`, 传入当前activity和软件Id进行初始化
+4. App启动时候调用`VerifyCore.share().setup(activity, "1111111");`, 传入当前activity和软件Id进行初始化
 5. 使用收费功能之前进行卡密验证
 ```
 VerifyCore.VerifyCoreCallback callback = new VerifyCore.VerifyCoreCallback() {

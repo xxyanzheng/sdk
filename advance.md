@@ -1,6 +1,6 @@
 # 叉叉验证sdk文档 - 高级功能
 
-#### [极简功能](https://github.com/xxyanzheng/sdk)
+#### [极简用法](https://github.com/xxyanzheng/sdk)
 #### [高级功能](#)
 #### [平台说明](https://github.com/xxyanzheng/sdk/blob/master/platform.md)
 
@@ -28,7 +28,7 @@ Android
 
 1. 将`VerifySDK.framework`拖入工程
 2. 设置`TARGETS`->`General`->`Embedded Binaries`->`+` 添加 `VerifySDK.framework`
-3. App启动时候调用`[VerifyCore.share init:@"111111"];`, 输入软件Id进行初始化
+3. App启动时候调用`[VerifyCore.share setup:@"111111"];`, 输入软件Id进行初始化
 4. 初始化后调用任一sdk通用函数, 来判断软件运行环境是否合法, 注意只能调用通用函数一次
 ```
 self.urls = [NSDictionary dictionaryWithObjectsAndKeys:
